@@ -12,6 +12,9 @@ let show_mode = {
 }
 let mode = show_mode.random;
 
+document.body.onload() = async () => {
+}
+
 function nextImage() {
     image_index++;
     if (image_index >= images.length) {
