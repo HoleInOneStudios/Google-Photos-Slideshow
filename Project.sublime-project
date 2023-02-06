@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": [
+				"src",
+				"docs"
+			]
+		},
+		{
+			"name": "Source",
+			"path": "./src"
+		},
+		{
+			"name": "Documentation",
+			"path": "./docs"
+		}
+	],
+	"settings": {
+
+	},
+	"build_systems": [
+
+	]
+}
