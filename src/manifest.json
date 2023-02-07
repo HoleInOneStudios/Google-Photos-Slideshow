@@ -1,0 +1,17 @@
+{
+    "name": "Google Photos Slideshow",
+    "short_name": "Google Slideshow",
+    "description": "A simple Google Photos Slideshow",
+    "start_url": "",
+    "theme_color": "#ffffff",
+    "background_color": "#000000",
+    "orientation": "any",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "Google_Photos_icon_(2020).svg",
+            "sizes": "59x59",
+            "type": "image/svg+xml"
+        }
+    ]
+}
