@@ -27,7 +27,7 @@ async function getAlbumList() {
         headers: {
             Authorization: "Bearer " + access_token
         },
-        body: {
+        data: {
 
         }
     })
@@ -38,23 +38,23 @@ async function getAlbumList() {
 }
 
 async function getAlbumPhotos(array = [], next) {
+    console.log($('#album_select').val())
     let result = await $.ajax({
         url: sign + "v1/mediaItems:search",
         type: "POST",
         headers: {
             Authorization: "Bearer " + access_token
         },
-        body: {
+        data: {
+            pageSize: 100,
             albumId: $('#album_select').val(),
             pageToken: next,
-            pageSize: 100
         }
     })
-    array = array.concat(result.mediaItems);
-    console.log(array, result)
-
+    console.log(result)
+    array = array.concat(result.mediaItems)
     if (result.nextPageToken) {
-        //array = array.concat(await getAlbumPhotos(array, result.nextPageToken))
+        array = array.concat(await getAlbumPhotos(array, result.nextPageToken))
     }
 
     return array;
