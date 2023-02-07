@@ -15,15 +15,27 @@
     </head>
 
     <body>
-        <button onclick="getToken();">Get access token</button>
-        <button onclick="getAlbumPhotos();">Get album photos</button>
-
-        <div>
-            <select id="album_select" value=""></select>
-        </div>
         <main>
             <img id="image" src="" alt="">
         </main>
+        <div>
+            <div id="auth_div">
+                <button onclick="getToken();">Get access token</button>
+            </div>
+            <div id="album_selector_div">
+                <label for="album_select">Select an album:</label>
+                <select id="album_select" value=""></select>
+                <button onclick="getAlbumPhotos();">Get Photos</button>
+            </div>
+            <div id="slideshow_mode_div">
+                <label for="slideshow_mode">Select Slideshow Mode:</label>
+                <select id="slideshow_mode" value="random" oninput="setMode()">
+                    <option value="random" selected>Random</option>
+                    <option value="sequential">Sequential</option>
+            </div>
+        </div>
+
+
     </body>
 
     <script src="script.js"></script>
