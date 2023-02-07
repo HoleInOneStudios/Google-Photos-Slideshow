@@ -7,7 +7,7 @@ var album_list = [];
 var photosList = [];
 
 let img = $('#image');
-let imageDurationSeconds = 5;
+let imageDurationSeconds = 3;
 
 let mode = {
     random: 0,
@@ -111,15 +111,18 @@ async function updatePhoto() {
     }
 }
 
-const interval = setInterval(async () => {
+function setMode() {
+    currentMode = mode[$('#mode_select').val()] ? mode[$('#mode_select').val()] : mode.sequential;
+}
+
+function loop() {
     if (currentMode == mode.sequential) {
         nextPhoto();
     } else if (currentMode == mode.random) {
         randomPhoto();
     }
     console.log(currentPhoto)
-}, imageDurationSeconds * 1000);
 
-function setMode() {
-    currentMode = mode[$('#mode_select').val()] ? mode[$('#mode_select').val()] : mode.sequential;
+    setTimeout(loop, imageDurationSeconds * 1000);
 }
+loop();
