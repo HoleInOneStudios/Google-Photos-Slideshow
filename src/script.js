@@ -3,6 +3,11 @@ const sign = "https://photoslibrary.googleapis.com/";
 var client;
 var access_token;
 
+var album_list = [];
+var photosList = [];
+
+let img = $('#image');
+
 function initClient() {
     client = google.accounts.oauth2.initTokenClient({
         client_id: '757214006943-k1h2o1raq2nhc7p742ll84ekb36jdhmn.apps.googleusercontent.com',
@@ -31,14 +36,15 @@ async function getAlbumList() {
 
         }
     })
-    console.log(result)
+    //console.log(result)
+    album_list = result.albums;
     setupAlbumSelector(result.albums)
 
     return result;
 }
 
 async function getAlbumPhotos(array = [], next) {
-    console.log($('#album_select').val())
+    //console.log($('#album_select').val())
     let result = await $.ajax({
         url: sign + "v1/mediaItems:search",
         type: "POST",
@@ -51,12 +57,13 @@ async function getAlbumPhotos(array = [], next) {
             pageToken: next,
         }
     })
-    console.log(result)
+    //console.log(result)
     array = array.concat(result.mediaItems)
     if (result.nextPageToken) {
         array = array.concat(await getAlbumPhotos(array, result.nextPageToken))
     }
 
+    photosList = array;
     return array;
 }
 
