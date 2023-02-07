@@ -23,15 +23,20 @@ function initClient() {
         scope: 'https://www.googleapis.com/auth/photoslibrary.readonly https://www.googleapis.com/auth/photoslibrary.sharing',
         callback: (tokenResponse) => {
             access_token = tokenResponse.access_token;
-            console.log(access_token);
-
+            window.localStorage.setItem('access_token', access_token);
             getAlbumList();
         },
     })
 }
 
 function getToken() {
-    client.requestAccessToken();
+    if (window.localStorage.getItem('access_token')) {
+        access_token = window.localStorage.getItem('access_token');
+        getAlbumList();
+    } else {
+        initClient();
+        client.requestAccessToken();
+    }
 }
 
 async function getAlbumList() {
