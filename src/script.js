@@ -112,7 +112,7 @@ async function randomPhoto() {
 async function updatePhoto() {
     if (photosList[currentPhoto]) {
         await img.attr('src', photosList[currentPhoto].baseUrl);
-        console.log(photosList[currentPhoto].baseUrl)
+        //console.log(photosList[currentPhoto].baseUrl)
     }
 }
 
@@ -126,7 +126,7 @@ function loop() {
     } else if (currentMode == mode.random) {
         randomPhoto();
     }
-    console.log(currentPhoto)
+    //console.log(currentPhoto)
 
     setTimeout(loop, imageDurationSeconds * 1000);
 }
