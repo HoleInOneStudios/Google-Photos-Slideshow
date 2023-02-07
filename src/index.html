@@ -19,24 +19,32 @@
             <img id="image" src="" alt="">
         </main>
         <div>
-            <div id="links">
-                <a href="https://github.com/HoleInOneStudios/Google-Photos-Slideshow">Github</a>
-                <a href="https://holeinonestudios.org">HoleInOneStudios</a>
-            </div>
-            <div id="auth_div">
-                <button onclick="getToken();">Login and Authenticate</button>
-            </div>
-            <div id="album_selector_div">
-                <label for="album_select">Select an album:</label>
-                <select id="album_select" value=""></select>
-                <button onclick="getAlbumPhotos();">Get Photos</button>
-            </div>
-            <div id="slideshow_mode_div">
-                <label for="slideshow_mode">Select Slideshow Mode:</label>
-                <select id="slideshow_mode" value="random" oninput="setMode()">
-                    <option value="random" selected>Random</option>
-                    <option value="sequential">Sequential</option>
-            </div>
+            <a href="https://github.com/HoleInOneStudios/Google-Photos-Slideshow">Github</a>
+            <a href="https://holeinonestudios.org">HoleInOneStudios</a>
+
+            <br>
+
+            <button onclick="getToken();">Login and Authenticate</button>
+
+            <br>
+
+            <label for="album_select">Select an album:</label>
+            <select id="album_select" value=""></select>
+            <button onclick="getAlbumPhotos();">Get Photos</button>
+
+            <br>
+
+            <label for="slideshow_speed">Select Slideshow Speed:</label>
+            <input type="number" id="slideshow_speed" min="1" value="3">
+            <button onclick="setSpeed()">Set Speed</button>
+
+            <br>
+
+            <label for="slideshow_mode">Select Slideshow Mode:</label>
+            <select id="slideshow_mode" value="random" oninput="setMode()">
+                <option value="random" selected>Random</option>
+                <option value="sequential">Sequential</option>
+            </select>
         </div>
     </body>
 

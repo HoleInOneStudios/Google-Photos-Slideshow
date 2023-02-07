@@ -126,3 +126,8 @@ function loop() {
     setTimeout(loop, imageDurationSeconds * 1000);
 }
 loop();
+
+function setSpeed() {
+    imageDurationSeconds = $('#slideshow_speed').val();
+    console.log(imageDurationSeconds)
+}
