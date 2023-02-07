@@ -7,55 +7,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Google Photos Slideshow</title>
 
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
 
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+
     </head>
 
     <body>
-        <script>
-            var client;
-            var access_token;
+        <button onclick="getToken();">Get access token</button>
+        <button onclick="getAlbumList();">Get albums</button>
+        <button onclick="getAlbumPhotos();">Get album photos</button>
 
-            function initClient() {
-                client = google.accounts.oauth2.initTokenClient({
-                    client_id: '757214006943-k1h2o1raq2nhc7p742ll84ekb36jdhmn.apps.googleusercontent.com',
-                    scope: 'https://www.googleapis.com/auth/photoslibrary.readonly https://www.googleapis.com/auth/photoslibrary.sharing',
-                    callback: (tokenResponse) => {
-                        access_token = tokenResponse.access_token;
-                        console.log(access_token);
-                    },
-                });
-            }
-            function getToken() {
-                client.requestAccessToken();
-                console.log(client)
-            }
-            function revokeToken() {
-                google.accounts.oauth2.revoke(access_token, () => { console.log('access token revoked') });
-            }
-            function loadAlbums() {
-                var xhr = new XMLHttpRequest();
+        <div>
+            <select id="album_select">
 
-                xhr.onreadystatechange = () => {
-                    if (xhr.readyState == XMLHttpRequest.DONE) {
-                        console.log(xhr.responseText);
-                        return xhr.responseText;
-                    }
-                }
-
-                xhr.open('GET', 'https://photoslibrary.googleapis.com/v1/albums/AH53LezB7wJOZpls_aMfuNjvUB0oPNFBFvkHjeCca71Qi55FcZQGrYGq4Q_Wfga8m7oTU5_ba68c');
-                xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
-                xhr.send();
-            }
-        </script>
-        <button onclick="getToken();">Get access token</button><br><br>
-        <button onclick="loadAlbums();">Load Albums</button><br><br>
-
+            </select>
+        </div>
         <main>
             <img id="image" src="" alt="">
         </main>
     </body>
+
+    <script src="script.js"></script>
 
 </html>
