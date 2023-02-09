@@ -19,7 +19,7 @@ let currentMode = mode.random;
 
 function initClient() {
     client = google.accounts.oauth2.initTokenClient({
-        client_id: '757214006943-k1h2o1raq2nhc7p742ll84ekb36jdhmn.apps.googleusercontent.com',
+        client_id: '1098098656368-s8prqsitghq2qr8hi85c3o0enc3h7buu.apps.googleusercontent.com',
         scope: 'https://www.googleapis.com/auth/photoslibrary.readonly https://www.googleapis.com/auth/photoslibrary.sharing',
         callback: (tokenResponse) => {
             access_token = tokenResponse.access_token;
