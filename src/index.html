@@ -10,13 +10,26 @@
         <meta name="description" content="A slideshow application for google photos albums.">
         <meta name="author" content="HoleInOneStudios">
         <meta name="keywords" content="Google Photos Slideshow, Google Photos, Slideshow">
-        <link rel="manifest" href="manifest.json">
-        <link rel="shortcut icon" href="Google_Photos_icon_(2020).svg" type="image/x-icon">
+        <link rel="manifest" href="./manifest.json">
+        <link rel="shortcut icon" href="Google_Photos_icon_(2020).png" type="image/x-icon">
 
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://accounts.google.com/gsi/client" async defer></script>
 
         <link rel="stylesheet" href="style.css">
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js');
+            }
+
+            document.querySelector('#show').addEventListener('click', () => {
+                const iconUrl = document.querySelector('select').selectedOptions[0].value;
+                let imgElement = document.createElement('img');
+                imgElement.src = iconUrl;
+                document.querySelector('#container').appendChild(imgElement);
+            });
+        </script>
     </head>
 
     <body>

@@ -9,9 +9,15 @@
     "display": "fullscreen",
     "icons": [
         {
-            "src": "Google_Photos_icon_(2020).svg",
-            "sizes": "59x59",
+            "purpose": "any maskable",
+            "src": "Google_Photos_icon_(2020).png",
+            "sizes": "512x512",
             "type": "image/svg+xml"
+        },
+        {
+            "src": "Google_Photos_icon_(2020).png",
+            "sizes": "512x512",
+            "type": "image/png"
         }
     ]
 }
