@@ -13,7 +13,7 @@
         <link rel="manifest" href="./manifest.json">
         <link rel="shortcut icon" href="Google_Photos_icon_(2020).png" type="image/x-icon">
 
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
         <script src="https://accounts.google.com/gsi/client" async defer></script>
 
         <link rel="stylesheet" href="style.css">
@@ -25,8 +25,29 @@
 
             document.querySelector('#show').addEventListener('click', () => {
                 const iconUrl = document.querySelector('select').selectedOptions[0].value;
+            
+                // Function to encode HTML entities
+                function encodeForHTML(str) {
+                    return str.replace(/&/g, '&amp;')
+                              .replace(/</g, '&lt;')
+                              .replace(/>/g, '&gt;')
+                              .replace(/"/g, '&quot;')
+                              .replace(/'/g, '&#39;');
+                }
+            
+                // Encode the URL before using it
+                const safeIconUrl = encodeForHTML(iconUrl);
+            
+                // Simple URL validation (optional but recommended)
+                const isValidUrl = /^https?:\/\/[a-zA-Z0-9-_.]+/.test(safeIconUrl);
+            
+                if (!isValidUrl) {
+                    alert('Invalid URL');
+                    return;
+                }
+            
                 let imgElement = document.createElement('img');
-                imgElement.src = iconUrl;
+                imgElement.src = safeIconUrl;
                 document.querySelector('#container').appendChild(imgElement);
             });
         </script>
